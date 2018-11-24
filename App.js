@@ -25,7 +25,7 @@ export default class App extends Component<Props> {
         }
         else {
             return (
-                <SignIn OnSignIn={this.OnPressBtnSignIn}
+                <SignIn ref='SignInRef' OnSignIn={this.OnPressBtnSignIn.bind(this)}
                         OnSignUp={
                             () => {
                                 this.setState({currentPage: 'signUp'});
@@ -42,23 +42,24 @@ export default class App extends Component<Props> {
 
     OnPressBtnSignIn() {
 
-
-        if (this.state.username || this.state.password) {
-            ToastAndroid.show('Ok', ToastAndroid.SHORT
-            );
-
-        }
-        else {
-            ToastAndroid.show(
-                'Username or Password Is Wrong',
-                ToastAndroid.SHORT
-            );
-            this.setStart({currentUser: 'TestingUser'});
-            this.setState({currentPage: 'signUp'});
-        }
+        // if (true) {
+        //     ToastAndroid.show('OK', ToastAndroid.SHORT
+        //     );
+        //
+        // }
+        // else {
+        //     ToastAndroid.show(
+        //         'Username or Password Is Wrong',
+        //         ToastAndroid.SHORT
+        //     );
+        // }
+        this.setState({currentUser: 'TestingUser'});
+        this.setState({currentPage: 'home'});
+        this.setState({username: 'TestingUser'});
     };
 
     findPage() {
+        Alert.alert('findPage');
         if (this.state.currentPage === 'signUp') {
             return (
                 <SignUp onSignUp={this.OnPressBtnSignIn}/>
@@ -68,7 +69,7 @@ export default class App extends Component<Props> {
             return (<ForgetPassword onResetPassword={this.OnPressBtnSignIn}/>);
         }
         else if (this.state.currentPage === 'home') {
-            return (<HomeScreen onSignUp={this.OnPressBtnSignIn}/>);
+            return (<HomeScreen username={this.state.username}/>);
         }
     }
 }

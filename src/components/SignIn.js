@@ -5,6 +5,7 @@ import React from "react";
 import propTypes from "prop-types";
 
 class SignIn extends Component {
+
     static propTypes = {
         OnSignIn: propTypes.func.isRequired,
         OnSignUp: propTypes.func.isRequired,
@@ -41,11 +42,12 @@ class SignIn extends Component {
                                 </View>
                                 <Form style={FormStyle}>
                                     <Item style={txtBorder} rounded last>
-                                        <Icon active name='home'/>
+                                        <Icon active name='person'/>
                                         <Input placeholder='Username'
                                                onChangeText={value => this.setState({username: value.trim()})}/>
                                     </Item>
                                     <Item style={txtBorder} rounded last>
+                                        <Icon active name='key'/>
                                         <Input placeholder='Password'
                                                onChangeText={value => this.setState({password: value.trim()})}/>
                                     </Item>

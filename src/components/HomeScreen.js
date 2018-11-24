@@ -1,39 +1,63 @@
+import {Component} from "react";
+import {Container, Content, Form, Input, Item, Button, Text, Icon, Toast} from "native-base";
+import {Image, ImageBackground, ScrollView, View} from "react-native";
 import React from "react";
-import {StatusBar} from "react-native";
-import {Container, Header, Title, Left, Icon, Right, Button, Body, Content, Text, Card, CardItem} from "native-base";
+import propTypes from "prop-types";
 
- class HomeScreen extends React.Component {
+class HomeScreen extends Component {
+
+    static propTypes = {
+        username: propTypes.string.isRequired
+    };
+
+
     render() {
-        return (<Container>
-            <Header>
-                <Left>
-                    <Button transparent
-                            onPress={() => this.props.navigation.navigate("DrawerOpen")}> <Icon
-                        name="menu"/>
-                    </Button>
-                </Left>
-                <Body> <Title>HomeScreen</Title>
-                </Body>
-                <Right/>
-            </Header>
-            <Content padder>
-                <Card>
-                    <CardItem>
-                        <Body>
-                        <Text>Chat App to talk some awesome people!</Text>
-                        </Body>
-                    </CardItem>
-                </Card>
-                <Button full rounded dark style={{marginTop: 10}}
-                        onPress={() => this.props.navigation.navigate("Chat")}>
-                    <Text>Chat With People</Text>
-                </Button>
-                <Button full rounded primary style={{marginTop: 10}}
-                        onPress={() => this.props.navigation.navigate("Profile")}>
-                    <Text>Goto Profiles</Text>
-                </Button>
-            </Content>
-        </Container>);
+        const {
+            containerStyle,
+            imageContainerStyle,
+            imageStyle,
+            btnLogin,
+            FormStyle,
+            txtBorder
+        } = styles;
+
+        return (<Text>{this.props.username}</Text>);
     }
 }
+
+const styles = {
+    imageContainerStyle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 50,
+    },
+    containerStyle: {
+        backgroundColor: '#ffffff'
+    },
+    header: {
+        fontSize: 40
+    },
+    btnLogin: {
+        marginTop: 30,
+    },
+    FormStyle: {
+        marginTop: 50,
+    },
+
+    imageStyle: {
+        width: 150,
+        height: 150,
+        borderRadius: 75,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        borderColor: '#d6d7da',
+    },
+    txtBorder: {
+        borderColor: '#000',
+        borderWidth: 1
+    }
+};
 export {HomeScreen};
